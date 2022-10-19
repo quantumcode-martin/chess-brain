@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   width="28.5"
+   height="31.5"
+   id="svg174"
+   sodipodi:docname="Chess_Pieces_Sprite.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs178" />
+  <sodipodi:namedview
+     id="namedview176"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     showgrid="false" />
+  <!-- white king //-->
+  <!-- white queen //-->
+  <!-- white bishop //-->
+  <!-- white knight //-->
+  <!-- white rook //-->
+  <g
+     style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     transform="translate(-8.25,-8.25)"
+     id="g74"
+     inkscape:label="white_rook">
+    <path
+       d="M 9,39 H 36 V 36 H 9 Z"
+       style="stroke-linecap:butt"
+       id="path60" />
+    <path
+       d="m 12,36 v -4 h 21 v 4 z"
+       style="stroke-linecap:butt"
+       id="path62" />
+    <path
+       d="M 11,14 V 9 h 4 v 2 h 5 V 9 h 5 v 2 h 5 V 9 h 4 v 5"
+       style="stroke-linecap:butt"
+       id="path64" />
+    <path
+       d="m 34,14 -3,3 H 14 l -3,-3"
+       id="path66" />
+    <path
+       d="M 31,17 V 29.5 H 14 V 17"
+       style="stroke-linecap:butt;stroke-linejoin:miter"
+       id="path68" />
+    <path
+       d="m 31,29.5 1.5,2.5 h -20 L 14,29.5"
+       id="path70" />
+    <path
+       d="M 11,14 H 34"
+       style="fill:none;stroke:#000000;stroke-linejoin:miter"
+       id="path72" />
+  </g>
+  <!-- white pawn //-->
+  <!-- black king //-->
+  <!-- black queen //-->
+  <!-- black bishop //-->
+  <!-- black knight //-->
+  <!-- black rook //-->
+  <!-- black pawn //-->
+</svg>
