@@ -11,7 +11,7 @@ class ChessOpeningDirectory extends ChangeNotifier{
   String name;
   final ChessColor playerColor;
 
-  List<String> currentPath = ['rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'];
+  List<ChessOpeningMove> currentPath = [];
   final Chess currentChessBoard = Chess();
 
   final String startingPosition = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
@@ -19,8 +19,7 @@ class ChessOpeningDirectory extends ChangeNotifier{
   final ChessOpeningMove testMove = ChessOpeningMove('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1', 'e4', 'comment');
 
   late Map<String, PositionMoves> moves = {
-    'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1': PositionMoves()..following.add(testMove),
-    'rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1': PositionMoves()..preceding.add(testMove),
+    'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1': PositionMoves(),
 
   };
   // {
@@ -47,22 +46,46 @@ class ChessOpeningDirectory extends ChangeNotifier{
   ChessOpeningDirectory.fromNewGame(this.name, this.playerColor){}
 
   void applyMove(move){
-    if(currentChessBoard.move(move))
-      {
-        currentPath.add(currentChessBoard.fen);
-        notifyListeners();
-      }
+    String startPos = currentChessBoard.fen;
+    String sanMove = currentChessBoard.move(move);
+    print(sanMove);
+
+    if(sanMove=="") return;
+
+    String endPos = currentChessBoard.fen;
+
+    ChessOpeningMove com = ChessOpeningMove(startPos, sanMove, "", resultingBoard: endPos);
+
+    currentPath.add(com);
+    print(currentPath);
+    notifyListeners();
+
+  }
+
+  void registerPath(){
+    print("test");
+    print(currentPath);
+    for(ChessOpeningMove com in currentPath){
+      registerMove(com);
+    }
+    notifyListeners();
   }
 
   void registerMove(ChessOpeningMove move){
-    if(moves.containsKey(move.originalBoard))
+    print(moves);
+    print(move);
+
+    if(moves.containsKey(move.originalBoard) && !moves[move.originalBoard]!.following.any((com) => com.move == move.move))
     {
+
       moves[move.originalBoard]!.following.add(move);
 
       if(!moves.containsKey(move.resultingBoard)) {
         moves[move.resultingBoard] = PositionMoves();
       }
       moves[move.resultingBoard]?.preceding.add(move);
+
+      print(moves);
     }else{
       print("ERR cannot register move");
     }
@@ -105,7 +128,7 @@ class ChessOpeningDirectory extends ChangeNotifier{
   }
 
   void setPathToPos(String pos){
-    List<String> path = [pos];
+    List<ChessOpeningMove> path = [];
 
     while(pos != startingPosition)
     {
@@ -113,17 +136,27 @@ class ChessOpeningDirectory extends ChangeNotifier{
         {
           if(moves[pos]!.preceding.isNotEmpty)
             {
+              path.insert(0, moves[pos]!.preceding[0]);
               pos = moves[pos]!.preceding[0].originalBoard;
-              path.insert(0, pos);
-              print(pos);
             }
           else{break;}
         }else{break;}
     }
 
     currentPath = path;
-    currentChessBoard.load(path.last);
+
+    currentChessBoard.load(path.isNotEmpty? path.last.resultingBoard : startingPosition);
     notifyListeners();
+  }
+
+  bool isPosInPath(String pos){
+    if(pos==startingPosition) return true;
+
+    for(ChessOpeningMove com in currentPath){
+      if(com.resultingBoard == pos) return true;
+    }
+
+    return false;
   }
 
 
@@ -145,11 +178,15 @@ class ChessOpeningMove
   num playCount = 0;
 
 
-  ChessOpeningMove(this.originalBoard ,this.move, this.comment, [this.playCount=0]){
+  ChessOpeningMove(this.originalBoard ,this.move, this.comment, {this.playCount=0, resultingBoard=""}){
     Chess game = Chess.fromFEN(originalBoard);
     game.move(move);
     // print(game.ascii);
-    resultingBoard = game.generate_fen();
+    if(resultingBoard != ""){
+      this.resultingBoard = resultingBoard;
+    }else{
+      this.resultingBoard = game.generate_fen();
+    }
   }
 
   bool isWhiteMove(){

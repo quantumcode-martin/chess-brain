@@ -89,7 +89,7 @@ class ChessMapState extends State<ChessMap> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
             boxShadow: [
-              BoxShadow(color: cod.currentPath.contains(pos)?Colors.red:_boardColor(pos), spreadRadius: 1),
+              BoxShadow(color: cod.isPosInPath(pos)?Colors.red:_boardColor(pos), spreadRadius: 1),
             ],
           ),
           child: StaticChessBoard(pos, 75, 75),

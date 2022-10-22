@@ -1491,7 +1491,7 @@ class Chess {
   ///      })
   /// or it can be called with a Move object
   /// It returns true if the move was made, or false if it could not be.
-  bool move(move) {
+  String move(move) {
     Move? move_obj;
     final moves = generate_moves();
 
@@ -1518,16 +1518,16 @@ class Chess {
 
     /* failed to find move */
     if (move_obj == null) {
-      return false;
+      return "";
     }
 
     /* need to make a copy of move because we can't generate SAN after the
        * move is made
        */
-
+    String san = move_to_san(move_obj);
     make_move(move_obj);
 
-    return true;
+    return san;
   }
 
   /// Takeback the last half-move, returning a move Map if successful, otherwise null.

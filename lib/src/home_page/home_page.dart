@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context ) {
-    ChessOpeningDirectory cod = ChessOpeningDirectory('test', ChessColor.WHITE);
+    final ChessOpeningDirectory cod = ChessOpeningDirectory('test', ChessColor.WHITE);
 
     return Scaffold(
       appBar: AppBar(title: const Text("The Chess Engine"),),
@@ -32,7 +32,8 @@ class HomePage extends StatelessWidget {
                 children: [
                   const Expanded(
                     child: Center(
-                      child: AspectRatio(aspectRatio: 1,
+                      child: AspectRatio(
+                        aspectRatio: 1,
                       child: ChessMap(),
                     ),
                   )),
@@ -48,11 +49,12 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          ElevatedButton(
-                              onPressed: ()=>{print("test")},
+                       Consumer<ChessOpeningDirectory>(
+                       builder:(context, cod, child) => ElevatedButton(
+                              onPressed: ()=>{cod.registerPath()},
                               child: const Text("Register Move")
 
-                          ),
+                          ),),
                         ],
                       ),
                     ),
