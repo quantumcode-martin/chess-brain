@@ -82,7 +82,6 @@ class ChessMapState extends State<ChessMap> {
     return InkWell(
       onTap: () {
         cod.setPathToPos(pos);
-        print('clicked');
       },
       child: Container(
           padding: EdgeInsets.all(1),
