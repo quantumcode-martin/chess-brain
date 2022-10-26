@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'The Chess Engine',
+      title: 'Chess Brain',
       theme: ThemeData(
         primarySwatch: Colors.brown,
       ),
