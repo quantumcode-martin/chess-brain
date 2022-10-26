@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
     final ChessOpeningDirectory cod = ChessOpeningDirectory('test', ChessColor.WHITE);
 
     return Scaffold(
-      appBar: AppBar(title: const Text("The Chess Engine"),),
+      appBar: AppBar(title: const Text("Chess Brain"),),
       body: SafeArea(
 
         child: Center(
