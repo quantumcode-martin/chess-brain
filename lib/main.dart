@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'src/app.dart';
 import 'src/settings/settings_controller.dart';
 import 'src/settings/settings_service.dart';
 import 'src/home_page/home_page.dart';
@@ -21,8 +19,6 @@ void main() async {
   // runApp(const HomePage());
 
   runApp(const MyApp());
-
-
 }
 
 class MyApp extends StatelessWidget {
