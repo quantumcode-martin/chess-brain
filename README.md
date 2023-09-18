@@ -1,6 +1,6 @@
 # chess-brain
 
-![header](90.1.81.96/images/chess_brain/chess_brain_cover.png?fbclid=IwAR0FVI-1H_YKOVc6ImASeM86YD-0Fvb34zgu_r24CO6hohBl1ss5rtJyzzg)
+![header](https://quantumcode.company/images/chess_brain/chess_brain_cover.png?fbclid=IwAR0FVI-1H_YKOVc6ImASeM86YD-0Fvb34zgu_r24CO6hohBl1ss5rtJyzzg)
 
 An open sourced web app to create, share and memorize your chess opening repertoires.
 
